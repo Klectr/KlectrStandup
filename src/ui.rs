@@ -12,14 +12,6 @@ pub struct Ui {}
 
 impl Ui {
     pub fn build(&self, frame: &mut Frame, app: &mut App) {
-        let container = Layout::default()
-            .direction(Direction::Horizontal)
-            .constraints(vec![
-                Constraint::Min(0),
-                Constraint::Max(100),
-                Constraint::Min(0),
-            ])
-            .split(frame.size());
         // layout containing a top middle and bottom panel
         let main_layout = Layout::default()
             .direction(Direction::Vertical)
@@ -29,7 +21,7 @@ impl Ui {
                 Constraint::Min(2),    // dual panes + add new
                 Constraint::Length(2), // instructions
             ])
-            .split(container[1]);
+            .split(frame.size());
 
         let todo_panes = Layout::default()
             .direction(Direction::Horizontal)
